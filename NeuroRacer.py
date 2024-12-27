@@ -16,11 +16,12 @@ import json
 import random
 import platform
 import config
+from State import State
 
 if platform.architecture()[0] == "64bit":
-    dllDir=os.path.dirname(__file__)+'\DLLsx64'
+    dllDir=os.path.dirname(__file__)+'/DLLsx64'
 else:
-    dllDir=os.path.dirname(__file__)+'\DLLs'
+    dllDir=os.path.dirname(__file__)+'/DLLs'
 sys.path.insert(0, dllDir)
 os.environ['PATH'] = os.environ['PATH'] + ";."
 
@@ -29,114 +30,100 @@ try:
 except ImportError:
     winsound = None
 
-sys.path.append(os.path.join(os.path.dirname(__file__), "libs"))
+from libs.inputs.inputs import UnpluggedError, get_gamepad
 
-# from inputs import get_gamepad
-
-# Set up the app variables
-app_window = 0
-
-# Path to sound file
-sound_path = os.path.join(os.path.dirname(__file__), "assets/beep.wav")
-red_path = os.path.join(os.path.dirname(__file__), "assets/red.png")
-json_path = os.path.join(os.path.dirname(__file__), "schedule.json")
-
-red_texture = -1
-test_schedule = None
-current_step = None
-current_step_start_time = None
-current_step_number = 0
-sound_playing = False
+app_state = State()
 
 # Initialize the app
 def acMain(ac_version):
-    global app_window, red_texture, test_schedule, current_step, current_step_number
+    global state
     ac.console("Woo, look at me, im mr. meeseeks!")
     ac.log("Woo, look at me, im mr. meeseeks!")
-    app_window = ac.newApp("Neuro Racer")
-    ac.setSize(app_window, 800, 800)
-    ac.addRenderCallback(app_window, on_render)    
-    ac.setBackgroundOpacity(app_window, 0)
-    ac.drawBorder(app_window, 0)
-    ac.setTitle(app_window, "")
-    ac.addLabel(app_window, "")
+    app_state.app_window = ac.newApp("Neuro Racer")
+    ac.setSize(app_state.app_window, 800, 800)
+    ac.addRenderCallback(app_state.app_window, on_render)    
+    ac.setBackgroundOpacity(app_state.app_window, 0)
+    ac.drawBorder(app_state.app_window, 0)
+    ac.setTitle(app_state.app_window, "")
+    ac.addLabel(app_state.app_window, "")
 
     # Load in red dot texture
-    red_texture = ac.newTexture(red_path)
+    app_state.red_texture = ac.newTexture(app_state.red_path)
     
     # Load test schedule
-    ac.console("Json path: " + json_path)
-    with open(json_path, "r") as json_file:
-        test_schedule = json.load(json_file)
+    ac.console("Json path: " + app_state.json_path)
+    with open(app_state.json_path, "r") as json_file:
+        app_state.test_schedule = json.load(json_file)
 
     # Get first step
-    current_step = test_schedule['test_schedule'][current_step_number]
-    log_some_shit("Current step is: {0}".format(json.dumps(current_step)))
+    app_state.current_step = app_state.test_schedule['test_schedule'][app_state.current_step_number]
+    log_some_shit("Current step is: {0}".format(json.dumps(app_state.current_step)))
+
+    try:
+        app_state.gamepad = get_gamepad()
+    except UnpluggedError:
+        log_some_shit("No controller detected!")
 
     return "Neuro Racer"
 
 # Render callback function to handle visual cues
 def on_render(delta_t):
-    global red_texture, current_step_start_time, current_step_number, test_schedule, current_step, sound_playing
+    global app_state
 
     current_time = time.time()
 
     # Select a random time
-    if (not "random_number" in current_step and "wait" in current_step):
+    if (not "random_number" in app_state.current_step and "wait" in app_state.current_step):
 
-        between = current_step["wait"]["between"]
+        between = app_state.current_step["wait"]["between"]
         min = between[0]["min"]
         max = between[1]["max"]
-        current_step["random_number"] =  random.randrange(min, max)
-        log_some_shit("Waiting for {0} seconds before next step.".format(current_step["random_number"]))
-        current_step_start_time = current_time
+        app_state.current_step["random_number"] =  random.randrange(min, max)
+        log_some_shit("Waiting for {0} seconds before next step.".format(app_state.current_step["random_number"]))
+        app_state.current_step_start_time = current_time
 
-    delta_time = current_time - current_step_start_time
+    delta_time = current_time - app_state.current_step_start_time
 
     # We are on the wait step, check to see if enough time has passed to go to next step
-    if ("wait" in current_step):
-        if (delta_time >= current_step["random_number"]):
-            current_step_number+=1
-            current_step = test_schedule['test_schedule'][current_step_number]
-            current_step_start_time = current_time
-            log_some_shit("Current step is: {0}".format(json.dumps(current_step)))
+    if ("wait" in app_state.current_step):
+        if (delta_time >= app_state.current_step["random_number"]):
+            app_state.current_step_number+=1
+            app_state.current_step = app_state.test_schedule['test_schedule'][app_state.current_step_number]
+            app_state.current_step_start_time = current_time
+            log_some_shit("Current step is: {0}".format(json.dumps(app_state.current_step)))
             return
         else: 
             return
 
-
     # Check if it's time to show the visual cue
-    if ("visual_cue" in current_step):
+    if ("visual_cue" in app_state.current_step):
         # Render the circle texture
-        ac.glQuadTextured(0, 0, 800, 800, red_texture)
+        ac.glQuadTextured(0, 0, 800, 800, app_state.red_texture)
 
         # Visual cue completed go to next step
         if (delta_time >= config.VISUAL_CUE_DURATION):
-            current_step_number+=1
-            current_step = test_schedule['test_schedule'][current_step_number]
-            current_step_start_time = time.time()
-            log_some_shit("Current step is: {0}".format(json.dumps(current_step)))
-
+            app_state.current_step_number+=1
+            app_state.current_step = app_state.test_schedule['test_schedule'][app_state.current_step_number]
+            app_state.current_step_start_time = time.time()
+            log_some_shit("Current step is: {0}".format(json.dumps(app_state.current_step)))
 
     # Play a sound
-    if ("audio_cue" in current_step):
+    if ("audio_cue" in app_state.current_step):
         if (winsound):
-            if (not sound_playing):
+            if (not app_state.sound_playing):
                 winsound.PlaySound("apps/python/NeuroRacer/assets/beep.wav", winsound.SND_FILENAME + winsound.SND_ASYNC)
-                sound_playing = True
+                app_state.sound_playing = True
 
         # Audio cue completed, go to next step
         if (delta_time >= config.AUDIO_CUE_DURATION):
-            current_step_number+=1
-            current_step = test_schedule['test_schedule'][current_step_number]
-            current_step_start_time = time.time()
-            sound_playing = False
-            log_some_shit("Current step is: {0}".format(json.dumps(current_step)))
+            app_state.current_step_number+=1
+            app_state.current_step = app_state.test_schedule['test_schedule'][app_state.current_step_number]
+            app_state.current_step_start_time = time.time()
+            app_state.sound_playing = False
+            log_some_shit("Current step is: {0}".format(json.dumps(app_state.current_step)))
 
-    if (current_step_number >= len(test_schedule['test_schedule'])):
+    if (app_state.current_step_number >= len(app_state.test_schedule['test_schedule'])):
         log_some_shit("Test completed!")
-
-
 
 def log_some_shit(shit):
     ac.log(shit)
@@ -144,4 +131,5 @@ def log_some_shit(shit):
 
 # Cleanup function when app closes
 def acShutdown():
-    ac.deleteApp(app_window)
+    ac.deleteApp(app_state.app_window)
+

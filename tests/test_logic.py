@@ -1,6 +1,5 @@
 #!/usr/bin/env python333
 
-import pytest
 import os
 import sys
 
