@@ -1,0 +1,26 @@
+{
+  "test_schedule": [
+    {
+      "wait": {
+        "between": [
+          { "min": 1 },
+          { "max": 2 }
+        ]
+      }
+    },
+    {
+      "audio_cue": true
+    },
+    {
+      "wait": {
+        "between": [
+          { "min": 1 },
+          { "max": 2 }
+        ]
+      }
+    },
+    {
+      "visual_cue": true
+    }
+  ]
+}
