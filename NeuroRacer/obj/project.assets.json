@@ -4646,11 +4646,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\wes\\source\\repos\\NeuroRacer\\NeuroRacer\\NeuroRacer.csproj",
+      "projectUniqueName": "F:\\SteamLibrary\\steamapps\\common\\assettocorsa\\apps\\python\\NeuroRacer\\NeuroRacer\\NeuroRacer.csproj",
       "projectName": "NeuroRacer",
-      "projectPath": "C:\\Users\\wes\\source\\repos\\NeuroRacer\\NeuroRacer\\NeuroRacer.csproj",
+      "projectPath": "F:\\SteamLibrary\\steamapps\\common\\assettocorsa\\apps\\python\\NeuroRacer\\NeuroRacer\\NeuroRacer.csproj",
       "packagesPath": "C:\\Users\\wes\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\wes\\source\\repos\\NeuroRacer\\NeuroRacer\\obj\\",
+      "outputPath": "F:\\SteamLibrary\\steamapps\\common\\assettocorsa\\apps\\python\\NeuroRacer\\NeuroRacer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

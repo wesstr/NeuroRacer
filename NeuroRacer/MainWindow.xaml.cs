@@ -14,6 +14,7 @@ using System.Security.AccessControl;
 using Microsoft.Win32;
 
 
+
 namespace NeuroRacer
 {
 
@@ -41,6 +42,7 @@ namespace NeuroRacer
         private bool isLoadingSettings = true;
         private string csvLogFile;
         private string scheduleFilePath;
+        private string outputDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
 
         private class AppSettings
@@ -59,6 +61,7 @@ namespace NeuroRacer
         public MainWindow()
         {
             InitializeComponent();
+            this.Title = "NeuroRacer - Test Conductor";
             udpClient = new UdpClient();
             random = new Random();
             LoadSchedule();
@@ -69,22 +72,45 @@ namespace NeuroRacer
             LoadSettings(); // Load saved settings on startup
             ButtonPollLoop();
             CountdownProgressBar.Value = 0; // Ensure progress bar starts at 0
-
+            StartDeviceMonitoring();
+            LogToConsole($"Default output directory: {outputDirectory}");
 
         }
-        private async Task Countdown(int durationMs, string phase)
+
+        private void SelectOutputDirectory_Click(object sender, RoutedEventArgs e)
         {
-            int steps = 100; // Number of progress updates
+            var dialog = new Microsoft.Win32.OpenFileDialog
+            {
+                CheckFileExists = false, // Allows selecting a folder
+                ValidateNames = false,
+                FileName = "Select Folder" // Trick to enable folder selection
+            };
+
+            if (dialog.ShowDialog() == true)
+            {
+                outputDirectory = System.IO.Path.GetDirectoryName(dialog.FileName);
+                LogToConsole($"Output directory set to: {outputDirectory}");
+            }
+        }
+
+        private async Task Countdown(int durationMs, string phase, int currentStep, int totalSteps)
+        {
+
+            int steps = 100;
             int interval = durationMs / steps;
 
-            Dispatcher.Invoke(() => CountdownProgressBar.Value = 0); // Start at 0
+            Dispatcher.Invoke(() => CountdownProgressBar.Value = 0);
 
-            for (int i = 0; i <= steps; i++) // Count up
+            for (int i = 0; i <= steps; i++)
             {
+                while (isPaused) await Task.Delay(100); // Wait while paused, then continue
+
+                if (!isRunning) break; // Stop progress if stopped
+
                 Dispatcher.Invoke(() =>
                 {
                     CountdownProgressBar.Value = i;
-                    CountdownText.Text = $"{i * (durationMs / steps) / 1000.0:F1}s";
+                    CountdownText.Text = $"{i * (durationMs / steps) / 1000.0:F1}s (Step {currentStep} of {totalSteps})";
                 });
                 await Task.Delay(interval);
             }
@@ -133,9 +159,15 @@ namespace NeuroRacer
         {
             Dispatcher.Invoke(() =>
             {
+                if (string.IsNullOrWhiteSpace(outputDirectory) || !Directory.Exists(outputDirectory))
+                {
+                    outputDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                    LogToConsole($"Invalid output directory, defaulting to: {outputDirectory}");
+                }
+
                 string testName = string.IsNullOrWhiteSpace(TestNameTextBox.Text) ? "Test" : TestNameTextBox.Text;
                 string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-                csvLogFile = $"{testName}_{timestamp}.csv";
+                csvLogFile = Path.Combine(outputDirectory, $"{testName}_{timestamp}.csv");
                 InitializeCsvLog();
             });
         }
@@ -252,8 +284,6 @@ namespace NeuroRacer
         private void InitializeController()
         {
             directInput = new DirectInput();
-
-            directInput = new DirectInput();
             availableDevices = new List<DeviceInstance>();
             availableDevices.AddRange(directInput.GetDevices(DeviceType.Gamepad, DeviceEnumerationFlags.AttachedOnly));
             availableDevices.AddRange(directInput.GetDevices(DeviceType.Joystick, DeviceEnumerationFlags.AttachedOnly));
@@ -267,8 +297,39 @@ namespace NeuroRacer
             }
         }
 
+        private void StartDeviceMonitoring()
+        {
+            Task.Run(async () =>
+            {
+                List<DeviceInstance> previousDevices = new List<DeviceInstance>(directInput.GetDevices(DeviceType.Joystick, DeviceEnumerationFlags.AttachedOnly));
+                previousDevices.AddRange(directInput.GetDevices(DeviceType.Gamepad, DeviceEnumerationFlags.AttachedOnly));
+                previousDevices.AddRange(directInput.GetDevices(DeviceType.Flight, DeviceEnumerationFlags.AttachedOnly));
+
+                while (true)
+                {
+                    await Task.Delay(2000); // Check every 2 seconds
+
+                    var currentDevices = new List<DeviceInstance>(directInput.GetDevices(DeviceType.Joystick, DeviceEnumerationFlags.AttachedOnly));
+                    currentDevices.AddRange(directInput.GetDevices(DeviceType.Gamepad, DeviceEnumerationFlags.AttachedOnly));
+                    currentDevices.AddRange(directInput.GetDevices(DeviceType.Flight, DeviceEnumerationFlags.AttachedOnly));
+
+                    if (currentDevices.Count != previousDevices.Count) // Device added/removed
+                    {
+                        previousDevices = currentDevices;
+                        availableDevices = currentDevices;
+                        Dispatcher.Invoke(() =>
+                        {
+                            PopulateDeviceDropdown();
+                            LogToConsole("Device list updated.");
+                        });
+                    }
+                }
+            });
+        }
+
         private void PopulateDeviceDropdown()
         {
+
             Dispatcher.Invoke(() =>
             {
                 DeviceDropdown.Items.Clear();
@@ -277,9 +338,14 @@ namespace NeuroRacer
                     DeviceDropdown.Items.Add(device.InstanceName);
                 }
                 if (DeviceDropdown.Items.Count > 0)
+                {
                     DeviceDropdown.SelectedIndex = 0;
+                    UpdateButtonDropdown();
+                }
             });
         }
+
+
 
         private void DeviceDropdown_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
@@ -288,10 +354,38 @@ namespace NeuroRacer
                 joystick = new Joystick(directInput, availableDevices[DeviceDropdown.SelectedIndex].InstanceGuid);
                 joystick.Acquire();
                 LogToConsole($"Selected input device: {availableDevices[DeviceDropdown.SelectedIndex].InstanceName}");
+                UpdateButtonDropdown();
                 SaveSettings();
             }
         }
 
+        private void UpdateButtonDropdown()
+        {
+            if (joystick == null) return;
+
+            ButtonDropdown.Items.Clear(); // Ensure the list is cleared before updating
+
+            try
+            {
+                joystick.Poll();
+                var state = joystick.GetCurrentState();
+                int buttonCount = joystick.Capabilities.ButtonCount;
+
+                for (int i = 0; i < buttonCount; i++)
+                {
+                    ButtonDropdown.Items.Add($"Button {i}");
+                }
+
+                if (ButtonDropdown.Items.Count > 0)
+                {
+                    ButtonDropdown.SelectedIndex = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogToConsole($"Failed to update button dropdown: {ex.Message}");
+            }
+        }
 
         private async void StartScheduleButton_Click(object sender, RoutedEventArgs e)
         {
@@ -306,6 +400,7 @@ namespace NeuroRacer
         private async Task MonitorSchedule()
         {
             SetCsvFileName();
+            int actionIndex = 0;
             foreach (var action in schedule)
             {
                 while (isPaused)
@@ -327,7 +422,7 @@ namespace NeuroRacer
 
                     int waitTime = random.Next(min, max) * 1000;
                     LogToConsole($"Waiting for {waitTime / 1000} seconds.");
-                    await Countdown(waitTime, "Waiting");
+                    await Countdown(waitTime, "Waiting", actionIndex + 1, schedule.Count);
                 }
                 else if (action.audio_cue || action.visual_cue)
                 {
@@ -336,7 +431,7 @@ namespace NeuroRacer
                     cueStartTime = DateTime.Now;
                     SendCommand(action);
                     LogToConsole($"Executing cue: {(action.audio_cue ? "Audio" : "Visual")} at {cueStartTime:HH:mm:ss.fff}");
-                    await Task.Delay(1000); // Cue duration is 1 second
+                    await Countdown(1000, "Waiting", actionIndex + 1, schedule.Count);
 
                     if (!buttonPressedDuringCue)
                     {
@@ -350,10 +445,12 @@ namespace NeuroRacer
 
                     currentCue = null;
                 }
+                actionIndex++;
             }
             isRunning = false;
             LogToConsole("Schedule execution finished.");
             CountdownProgressBar.Value = 0; // Ensure progress bar starts at 0
+
         }
 
         private void SendCommand(ScheduleAction action)
@@ -435,10 +532,14 @@ namespace NeuroRacer
             });
         }
 
-
         private void StopScheduleButton_Click(object sender, RoutedEventArgs e)
         {
             isRunning = false;
+            Dispatcher.Invoke(() =>
+            {
+                CountdownProgressBar.Value = 0;
+                CountdownText.Text = "Stopped";
+            });
             LogToConsole("Schedule execution stopped.");
         }
 
@@ -492,6 +593,11 @@ namespace NeuroRacer
                 }
                 Thread.Sleep(100);
             }
+        }
+
+        private void CountdownProgressBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
         }
     }
 
