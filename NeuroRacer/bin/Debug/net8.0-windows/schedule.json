@@ -1,70 +1,430 @@
+
 {
-  "test_schedule": [
-    {
-      "wait": {
-        "between": [
-          { "min": 1 },
-          { "max": 2 }
-        ]
-      }
-    },
-    {
-      "audio_cue": true
-    },
-    {
-      "wait": {
-        "between": [
-          { "min": 10 },
-          { "max": 20 }
-        ]
-      }
-    },
-    {
-      "visual_cue": true
-    },
-    {
-      "wait": {
-        "between": [
-          { "min": 10 },
-          { "max": 20 }
-        ]
-      }
-    },
-    {
-      "visual_cue": true
-    },
-    {
-      "wait": {
-        "between": [
-          { "min": 5 },
-          { "max": 10 }
-        ]
-      }
-    },
-    {
-      "visual_cue": true
-    },
-    {
-      "wait": {
-        "between": [
-          { "min": 10 },
-          { "max": 30 }
-        ]
-      }
-    },
-    {
-      "audio_cue": true
-    },
-    {
-      "wait": {
-        "between": [
-          { "min": 10 },
-          { "max": 15 }
-        ]
-      }
-    },
-    {
-      "audio_cue": true
-    }
-  ]
+    "test_schedule":
+    [
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 15}]
+            }
+        },
+        {
+            "audio_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 20}]
+            }
+        },
+        {
+            "visual_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 20}]
+            }
+        },
+        {
+            "visual_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 5}, {"max": 10}]
+            }
+        },
+        {
+            "visual_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 30}]
+            }
+        },
+        {
+            "audio_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 15}]
+            }
+        },
+        {
+            "audio_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 5}]
+            }
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 15}]
+            }
+        },
+        {
+            "audio_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 20}]
+            }
+        },
+        {
+            "visual_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 20}]
+            }
+        },
+        {
+            "visual_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 5}, {"max": 10}]
+            }
+        },
+        {
+            "visual_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 30}]
+            }
+        },
+        {
+            "audio_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 15}]
+            }
+        },
+        {
+            "audio_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 5}]
+            }
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 15}]
+            }
+        },
+        {
+            "audio_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 20}]
+            }
+        },
+        {
+            "visual_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 20}]
+            }
+        },
+        {
+            "visual_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 5}, {"max": 10}]
+            }
+        },
+        {
+            "visual_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 30}]
+            }
+        },
+        {
+            "audio_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 15}]
+            }
+        },
+        {
+            "audio_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 5}]
+            }
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 15}]
+            }
+        },
+        {
+            "audio_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 20}]
+            }
+        },
+        {
+            "visual_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 20}]
+            }
+        },
+        {
+            "visual_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 5}, {"max": 10}]
+            }
+        },
+        {
+            "visual_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 30}]
+            }
+        },
+        {
+            "audio_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 15}]
+            }
+        },
+        {
+            "audio_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 5}]
+            }
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 15}]
+            }
+        },
+        {
+            "audio_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 20}]
+            }
+        },
+        {
+            "visual_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 20}]
+            }
+        },
+        {
+            "visual_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 5}, {"max": 10}]
+            }
+        },
+        {
+            "visual_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 30}]
+            }
+        },
+        {
+            "audio_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 15}]
+            }
+        },
+        {
+            "audio_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 5}]
+            }
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 15}]
+            }
+        },
+        {
+            "audio_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 20}]
+            }
+        },
+        {
+            "visual_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 20}]
+            }
+        },
+        {
+            "visual_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 5}, {"max": 10}]
+            }
+        },
+        {
+            "visual_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 30}]
+            }
+        },
+        {
+            "audio_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 15}]
+            }
+        },
+        {
+            "audio_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 5}]
+            }
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 15}]
+            }
+        },
+        {
+            "audio_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 20}]
+            }
+        },
+        {
+            "visual_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 20}]
+            }
+        },
+        {
+            "visual_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 5}, {"max": 10}]
+            }
+        },
+        {
+            "visual_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 30}]
+            }
+        },
+        {
+            "audio_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 15}]
+            }
+        },
+        {
+            "audio_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 5}]
+            }
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 15}]
+            }
+        },
+        {
+            "audio_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 20}]
+            }
+        },
+        {
+            "visual_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 20}]
+            }
+        },
+        {
+            "visual_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 5}, {"max": 10}]
+            }
+        },
+        {
+            "visual_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 30}]
+            }
+        },
+        {
+            "audio_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 15}]
+            }
+        },
+        {
+            "audio_cue": true
+        },
+        {
+            "wait": {
+                "between": [{"min": 10}, {"max": 5}]
+            }
+        }
+    ]
 }
