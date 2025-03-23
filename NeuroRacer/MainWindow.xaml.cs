@@ -67,7 +67,7 @@ namespace NeuroRacer
         public MainWindow()
         {
             InitializeComponent();
-            this.Title = "NeuroRacer - Test Conductor";
+            this.Title = "NeuroRacer - Test Conductor - v0.1.0";
             udpClient = new UdpClient();
             random = new Random();
             LoadSchedule();
@@ -193,9 +193,9 @@ namespace NeuroRacer
                     LogToConsole($"Invalid output directory, defaulting to: {outputDirectory}");
                 }
 
-                string testName = string.IsNullOrWhiteSpace(TestNameTextBox.Text) ? "Test" : TestNameTextBox.Text;
-                string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-                csvLogFile = Path.Combine(outputDirectory, $"{testName}_{timestamp}.csv");
+                //string testName = string.IsNullOrWhiteSpace(TestNameTextBox.Text) ? "Test" : TestNameTextBox.Text;
+                //string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+                //csvLogFile = Path.Combine(outputDirectory, $"{testName}_{timestamp}.csv");
                 InitializeCsvLog();
             });
         }
@@ -210,7 +210,7 @@ namespace NeuroRacer
 
         private void LogCueToCsv(string cueType, bool buttonPressed, double reactionTime)
         {
-            string logEntry = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss},{cueType},{buttonPressed},{reactionTime}\n";
+            string logEntry = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff},{cueType},{buttonPressed},{reactionTime}\n";
             File.AppendAllText(csvLogFile, logEntry);
         }
 
@@ -405,6 +405,30 @@ namespace NeuroRacer
 
         private async void StartScheduleButton_Click(object sender, RoutedEventArgs e)
         {
+            // Create and show the configuration dialog.
+            var configDialog = new TestConfigurationDialog
+            {
+                Owner = this // center the dialog on the main window
+            };
+
+            bool? result = configDialog.ShowDialog();
+            if (result != true)
+            {
+                LogToConsole("Test configuration canceled.");
+                return;
+            }
+
+            // Retrieve the selections from the dialog.
+            scheduleFilePath = configDialog.ScheduleFilePath;
+            csvLogFile = configDialog.CsvLogFile;
+
+            // Load the schedule file.
+            LoadScheduleFromFile(scheduleFilePath);
+
+            // Set up the CSV log.
+            InitializeCsvLog();
+
+            // Start the test as before.
             if (isRunning) return;
             isRunning = true;
             isPaused = false;
@@ -457,6 +481,7 @@ namespace NeuroRacer
                     if (!buttonPressedDuringCue)
                     {
                         LogToConsole("Cue missed! No button was pressed during the cue.");
+                        LogCueToCsv("missed", false, -1);
                     }
 
                     currentCue = null;
@@ -530,13 +555,14 @@ namespace NeuroRacer
                 DateTime buttonPressTime = DateTime.Now;
                 bool wasCueActive = currentCue != null;
                 LogToConsole($"Button {selectedButtonIndex + 1} pressed at {buttonPressTime:HH:mm:ss.fff} - Cue Active: {wasCueActive}");
+
                 if (wasCueActive && !loggedReactionTimeToCsv)
                 {
                     buttonPressedDuringCue = true;
                     loggedReactionTimeToCsv = true;
                     TimeSpan reactionTime = buttonPressTime - cueStartTime;
-                    LogToConsole($"Reaction time: {reactionTime.TotalMilliseconds} ms.");
                     string cueType = currentAction.audio_cue ? "Audio" : "Visual";
+                    LogToConsole($"Reaction time: {reactionTime.TotalMilliseconds} ms.");
                     LogCueToCsv(cueType, buttonPressedDuringCue, reactionTime.TotalMilliseconds);
                 }
             }

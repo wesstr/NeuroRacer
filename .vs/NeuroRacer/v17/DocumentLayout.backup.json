@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "F:\\SteamLibrary\\steamapps\\common\\assettocorsa\\apps\\python\\NeuroRacer\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{CDCD4A3C-3E21-4738-88A6-D56DB285CE75}|NeuroRacer\\NeuroRacer.csproj|f:\\steamlibrary\\steamapps\\common\\assettocorsa\\apps\\python\\neuroracer\\neuroracer\\testconfigurationdialog.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDCD4A3C-3E21-4738-88A6-D56DB285CE75}|NeuroRacer\\NeuroRacer.csproj|solutionrelative:neuroracer\\testconfigurationdialog.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CDCD4A3C-3E21-4738-88A6-D56DB285CE75}|NeuroRacer\\NeuroRacer.csproj|f:\\steamlibrary\\steamapps\\common\\assettocorsa\\apps\\python\\neuroracer\\neuroracer\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CDCD4A3C-3E21-4738-88A6-D56DB285CE75}|NeuroRacer\\NeuroRacer.csproj|solutionrelative:neuroracer\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CDCD4A3C-3E21-4738-88A6-D56DB285CE75}|NeuroRacer\\NeuroRacer.csproj|f:\\steamlibrary\\steamapps\\common\\assettocorsa\\apps\\python\\neuroracer\\neuroracer\\neuroracer.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{CDCD4A3C-3E21-4738-88A6-D56DB285CE75}|NeuroRacer\\NeuroRacer.csproj|solutionrelative:neuroracer\\neuroracer.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{CDCD4A3C-3E21-4738-88A6-D56DB285CE75}|NeuroRacer\\NeuroRacer.csproj|f:\\steamlibrary\\steamapps\\common\\assettocorsa\\apps\\python\\neuroracer\\neuroracer\\testconfigurationdialog.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CDCD4A3C-3E21-4738-88A6-D56DB285CE75}|NeuroRacer\\NeuroRacer.csproj|solutionrelative:neuroracer\\testconfigurationdialog.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CDCD4A3C-3E21-4738-88A6-D56DB285CE75}|NeuroRacer\\NeuroRacer.csproj|f:\\steamlibrary\\steamapps\\common\\assettocorsa\\apps\\python\\neuroracer\\neuroracer\\schedule.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -19,12 +23,16 @@
       "RelativeMoniker": "D:0:0:{CDCD4A3C-3E21-4738-88A6-D56DB285CE75}|NeuroRacer\\NeuroRacer.csproj|solutionrelative:neuroracer\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CDCD4A3C-3E21-4738-88A6-D56DB285CE75}|NeuroRacer\\NeuroRacer.csproj|f:\\steamlibrary\\steamapps\\common\\assettocorsa\\apps\\python\\neuroracer\\neuroracer\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CDCD4A3C-3E21-4738-88A6-D56DB285CE75}|NeuroRacer\\NeuroRacer.csproj|solutionrelative:neuroracer\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{CDCD4A3C-3E21-4738-88A6-D56DB285CE75}|NeuroRacer\\NeuroRacer.csproj|f:\\steamlibrary\\steamapps\\common\\assettocorsa\\apps\\python\\neuroracer\\neuroracer\\settings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{CDCD4A3C-3E21-4738-88A6-D56DB285CE75}|NeuroRacer\\NeuroRacer.csproj|solutionrelative:neuroracer\\settings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDCD4A3C-3E21-4738-88A6-D56DB285CE75}|NeuroRacer\\NeuroRacer.csproj|f:\\steamlibrary\\steamapps\\common\\assettocorsa\\apps\\python\\neuroracer\\neuroracer\\neuroracer.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{CDCD4A3C-3E21-4738-88A6-D56DB285CE75}|NeuroRacer\\NeuroRacer.csproj|solutionrelative:neuroracer\\neuroracer.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDCD4A3C-3E21-4738-88A6-D56DB285CE75}|NeuroRacer\\NeuroRacer.csproj|f:\\steamlibrary\\steamapps\\common\\assettocorsa\\apps\\python\\neuroracer\\neuroracer\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDCD4A3C-3E21-4738-88A6-D56DB285CE75}|NeuroRacer\\NeuroRacer.csproj|solutionrelative:neuroracer\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,11 +42,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "schedule.json",
               "DocumentMoniker": "F:\\SteamLibrary\\steamapps\\common\\assettocorsa\\apps\\python\\NeuroRacer\\NeuroRacer\\schedule.json",
               "RelativeDocumentMoniker": "NeuroRacer\\schedule.json",
@@ -47,11 +55,37 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEMAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-02-10T02:18:41.256Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "TestConfigurationDialog.xaml.cs",
+              "DocumentMoniker": "F:\\SteamLibrary\\steamapps\\common\\assettocorsa\\apps\\python\\NeuroRacer\\NeuroRacer\\TestConfigurationDialog.xaml.cs",
+              "RelativeDocumentMoniker": "NeuroRacer\\TestConfigurationDialog.xaml.cs",
+              "ToolTip": "F:\\SteamLibrary\\steamapps\\common\\assettocorsa\\apps\\python\\NeuroRacer\\NeuroRacer\\TestConfigurationDialog.xaml.cs",
+              "RelativeToolTip": "NeuroRacer\\TestConfigurationDialog.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T18:36:12.826Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TestConfigurationDialog.xaml",
+              "DocumentMoniker": "F:\\SteamLibrary\\steamapps\\common\\assettocorsa\\apps\\python\\NeuroRacer\\NeuroRacer\\TestConfigurationDialog.xaml",
+              "RelativeDocumentMoniker": "NeuroRacer\\TestConfigurationDialog.xaml",
+              "ToolTip": "F:\\SteamLibrary\\steamapps\\common\\assettocorsa\\apps\\python\\NeuroRacer\\NeuroRacer\\TestConfigurationDialog.xaml",
+              "RelativeToolTip": "NeuroRacer\\TestConfigurationDialog.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-23T18:35:15.718Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "NeuroRacer.csproj",
               "DocumentMoniker": "F:\\SteamLibrary\\steamapps\\common\\assettocorsa\\apps\\python\\NeuroRacer\\NeuroRacer\\NeuroRacer.csproj",
               "RelativeDocumentMoniker": "NeuroRacer\\NeuroRacer.csproj",
@@ -59,18 +93,20 @@
               "RelativeToolTip": "NeuroRacer\\NeuroRacer.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-02-20T03:56:29.401Z"
+              "WhenOpened": "2025-02-20T03:56:29.401Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "F:\\SteamLibrary\\steamapps\\common\\assettocorsa\\apps\\python\\NeuroRacer\\NeuroRacer\\MainWindow.xaml",
               "RelativeDocumentMoniker": "NeuroRacer\\MainWindow.xaml",
               "ToolTip": "F:\\SteamLibrary\\steamapps\\common\\assettocorsa\\apps\\python\\NeuroRacer\\NeuroRacer\\MainWindow.xaml",
               "RelativeToolTip": "NeuroRacer\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-20T02:16:35.192Z"
+              "WhenOpened": "2025-02-20T02:16:35.192Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -82,11 +118,12 @@
               "RelativeToolTip": "NeuroRacer\\settings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-02-18T04:30:03.856Z"
+              "WhenOpened": "2025-02-18T04:30:03.856Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "F:\\SteamLibrary\\steamapps\\common\\assettocorsa\\apps\\python\\NeuroRacer\\NeuroRacer\\App.xaml.cs",
               "RelativeDocumentMoniker": "NeuroRacer\\App.xaml.cs",
@@ -98,13 +135,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "F:\\SteamLibrary\\steamapps\\common\\assettocorsa\\apps\\python\\NeuroRacer\\NeuroRacer\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "NeuroRacer\\MainWindow.xaml.cs",
               "ToolTip": "F:\\SteamLibrary\\steamapps\\common\\assettocorsa\\apps\\python\\NeuroRacer\\NeuroRacer\\MainWindow.xaml.cs",
               "RelativeToolTip": "NeuroRacer\\MainWindow.xaml.cs",
-              "ViewState": "AgIAADABAAAAAAAAAAAEwEcBAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAABoAAAAAAAAAAAAYwCAAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-10T01:53:27.821Z",
               "EditorCaption": ""

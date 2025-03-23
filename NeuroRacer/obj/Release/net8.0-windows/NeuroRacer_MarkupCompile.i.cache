@@ -10,11 +10,11 @@ none
 false
 TRACE;RELEASE;NET;NET8_0;NETCOREAPP
 F:\SteamLibrary\steamapps\common\assettocorsa\apps\python\NeuroRacer\NeuroRacer\App.xaml
-11407045341
+21532584433
 
-6-201234000
+7-209954955
 200-841792345
-MainWindow.xaml;
+MainWindow.xaml;TestConfigurationDialog.xaml;
 
-True
+False
 

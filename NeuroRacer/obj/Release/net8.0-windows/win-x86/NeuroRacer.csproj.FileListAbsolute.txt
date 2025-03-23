@@ -484,3 +484,5 @@ F:\SteamLibrary\steamapps\common\assettocorsa\apps\python\NeuroRacer\NeuroRacer\
 F:\SteamLibrary\steamapps\common\assettocorsa\apps\python\NeuroRacer\NeuroRacer\obj\Release\net8.0-windows\win-x86\NeuroRacer.pdb
 F:\SteamLibrary\steamapps\common\assettocorsa\apps\python\NeuroRacer\NeuroRacer\obj\Release\net8.0-windows\win-x86\NeuroRacer.genruntimeconfig.cache
 F:\SteamLibrary\steamapps\common\assettocorsa\apps\python\NeuroRacer\NeuroRacer\obj\Release\net8.0-windows\win-x86\ref\NeuroRacer.dll
+F:\SteamLibrary\steamapps\common\assettocorsa\apps\python\NeuroRacer\NeuroRacer\obj\Release\net8.0-windows\win-x86\TestConfigurationDialog.baml
+F:\SteamLibrary\steamapps\common\assettocorsa\apps\python\NeuroRacer\NeuroRacer\obj\Release\net8.0-windows\win-x86\TestConfigurationDialog.g.cs
