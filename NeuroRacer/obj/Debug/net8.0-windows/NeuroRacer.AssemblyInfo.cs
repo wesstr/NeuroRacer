@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NeuroRacer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4d82ec7f70a8adac212b60f92081a0eb8095a85a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0ccbc2efc4202acd174452e0e6255df01fc5e49e")]
 [assembly: System.Reflection.AssemblyProductAttribute("NeuroRacer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NeuroRacer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

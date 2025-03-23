@@ -55,8 +55,7 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEMAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-02-10T02:18:41.256Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -80,8 +79,7 @@
               "ToolTip": "F:\\SteamLibrary\\steamapps\\common\\assettocorsa\\apps\\python\\NeuroRacer\\NeuroRacer\\TestConfigurationDialog.xaml",
               "RelativeToolTip": "NeuroRacer\\TestConfigurationDialog.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-23T18:35:15.718Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-23T18:35:15.718Z"
             },
             {
               "$type": "Document",
@@ -93,8 +91,7 @@
               "RelativeToolTip": "NeuroRacer\\NeuroRacer.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-02-20T03:56:29.401Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-20T03:56:29.401Z"
             },
             {
               "$type": "Document",
@@ -105,8 +102,7 @@
               "ToolTip": "F:\\SteamLibrary\\steamapps\\common\\assettocorsa\\apps\\python\\NeuroRacer\\NeuroRacer\\MainWindow.xaml",
               "RelativeToolTip": "NeuroRacer\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-20T02:16:35.192Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-20T02:16:35.192Z"
             },
             {
               "$type": "Document",
@@ -118,8 +114,7 @@
               "RelativeToolTip": "NeuroRacer\\settings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-02-18T04:30:03.856Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-18T04:30:03.856Z"
             },
             {
               "$type": "Document",
@@ -143,8 +138,7 @@
               "RelativeToolTip": "NeuroRacer\\MainWindow.xaml.cs",
               "ViewState": "AgIAABoAAAAAAAAAAAAYwCAAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-10T01:53:27.821Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-10T01:53:27.821Z"
             }
           ]
         }
